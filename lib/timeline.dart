@@ -31,6 +31,7 @@ class Timeline extends StatelessWidget {
   final bool shrinkWrap;
   final bool primary;
   final bool reverse;
+  final EdgeInsetsGeometry padding;
 
   /// Creates a scrollable timeline of widgets that are created befirehand.
   /// Note: [TimelineModel.icon]'s size is ignored when `position` is not
@@ -45,7 +46,8 @@ class Timeline extends StatelessWidget {
         this.physics,
         this.shrinkWrap = false,
         this.primary = false,
-        this.reverse = false})
+        this.reverse = false.
+        this.padding})
       : itemCount = children.length,
         properties = TimelineProperties(
             lineColor: lineColor, lineWidth: lineWidth, iconSize: iconSize),
@@ -65,7 +67,8 @@ class Timeline extends StatelessWidget {
         this.physics,
         this.shrinkWrap = false,
         this.primary = false,
-        this.reverse = false})
+        this.reverse = false,
+        this.padding})
       : properties = TimelineProperties(
       lineColor: lineColor, lineWidth: lineWidth, iconSize: iconSize);
 
@@ -78,6 +81,7 @@ class Timeline extends StatelessWidget {
         controller: controller,
         reverse: reverse,
         primary: primary,
+        padding: padding,
         itemBuilder: (context, i) {
           final TimelineModel model = itemBuilder(context, i);
           model.isFirst = reverse ? i == (itemCount - 1) : i == 0;
